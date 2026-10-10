@@ -8,7 +8,7 @@ export default function Home() {
       title: 'Vigenère Cipher',
       subtitle: 'Classical Cryptography • 16th Century',
       category: 'Classical',
-      categoryColor: 'bg-emerald-950/60 text-emerald-300 border-emerald-500/40',
+      categoryColor: 'algorithm-badge-vigenere',
       icon: Key,
       description:
         'A polyalphabetic substitution cipher that encrypts alphabetic text using a repeating keyword and modular arithmetic over Z26.',
@@ -25,7 +25,7 @@ export default function Home() {
       title: 'AES-128',
       subtitle: 'Symmetric Block Cipher • FIPS-197',
       category: 'Symmetric',
-      categoryColor: 'bg-cyan-950/60 text-cyan-300 border-cyan-500/40',
+      categoryColor: 'algorithm-badge-aes',
       icon: Cpu,
       description:
         'The Advanced Encryption Standard processing 128-bit blocks through 10 rounds of substitution, permutation, and Galois Field GF(2^8) mixing.',
@@ -42,7 +42,7 @@ export default function Home() {
       title: 'RSA Cryptosystem',
       subtitle: 'Asymmetric Cryptography • Public-Key',
       category: 'Asymmetric',
-      categoryColor: 'bg-indigo-950/60 text-indigo-300 border-indigo-500/40',
+      categoryColor: 'algorithm-badge-rsa',
       icon: Lock,
       description:
         'The foundational public-key algorithm based on the computational difficulty of factoring the product of two large prime numbers.',
@@ -63,7 +63,7 @@ export default function Home() {
       <section className="text-center space-y-4 max-w-3xl mx-auto">
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
           Cryptography Algorithm{' '}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
+          <span className="text-[#7C5230]">
             Visualizer & Demonstrator
           </span>
         </h1>
@@ -145,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* Architecture & Verification Banner */}
-      <section className="p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+      <section className="p-6 rounded-2xl bg-[#FFFCF5] border border-[#E8DECA] shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 rounded-xl bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0">
             <ShieldCheck className="w-6 h-6" />
@@ -170,3 +170,5 @@ export default function Home() {
     </div>
   );
 }
+
+

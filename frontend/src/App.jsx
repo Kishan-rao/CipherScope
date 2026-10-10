@@ -9,7 +9,7 @@ import { Shield, ExternalLink, Code2 } from 'lucide-react';
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#0b0f19] text-slate-100 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#F7F2E8] text-[#292820] font-sans">
       {/* Navigation Header */}
       <Navbar />
 
@@ -24,26 +24,27 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-slate-950/90 py-8 px-4 sm:px-6 lg:px-8 text-xs text-slate-400">
+      <footer className="border-t border-[#E8DECA] bg-[#FFFCF5] py-8 px-4 sm:px-6 lg:px-8 text-xs text-[#6B665B]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="space-y-1">
             <div className="flex items-center justify-center sm:justify-start space-x-2">
-              <Shield className="w-4 h-4 text-cyan-400" />
-              <span className="font-bold text-white">Cryptography Algorithm Visualizer & Demonstrator</span>
-              <span className="px-1.5 py-0.2 rounded bg-slate-800 text-[10px] text-cyan-400 font-mono">CNS Lab</span>
+              <Shield className="w-4 h-4 text-[#9A6B3F]" />
+              <span className="font-bold text-[#292820]">Cryptography Algorithm Visualizer & Demonstrator</span>
+              <span className="px-1.5 py-0.2 rounded bg-[#F0E8D9] text-[10px] text-[#9A6B3F] font-mono">CNS Lab</span>
             </div>
-            <p className="text-slate-500 text-[11px]">
+            <p className="text-[#6B665B] text-[11px]">
               Built with React, Vite, Tailwind CSS, Python 3, FastAPI, and Pytest.
             </p>
           </div>
 
           <div className="flex items-center space-x-6 text-[11px] font-mono">
-            <Link to="/vigenere" className="hover:text-cyan-400 transition-colors">Vigenère</Link>
-            <Link to="/aes" className="hover:text-cyan-400 transition-colors">AES-128</Link>
-            <Link to="/rsa" className="hover:text-cyan-400 transition-colors">RSA</Link>
+            <Link to="/vigenere" className="hover:text-[#9A6B3F] transition-colors">Vigenère</Link>
+            <Link to="/aes" className="hover:text-[#9A6B3F] transition-colors">AES-128</Link>
+            <Link to="/rsa" className="hover:text-[#9A6B3F] transition-colors">RSA</Link>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+

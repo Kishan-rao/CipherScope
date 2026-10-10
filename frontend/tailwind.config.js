@@ -1,23 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         cipher: {
-          bg: '#0b0f19',
-          card: '#111827',
-          border: '#1f2937',
-          muted: '#9ca3af',
-          accent: '#38bdf8',
+          bg: 'var(--color-app)', card: 'var(--color-card)', surface: 'var(--color-surface)',
+          border: 'var(--color-border)', text: 'var(--color-text)', muted: 'var(--color-muted)', accent: 'var(--color-accent)',
         }
       },
-      fontFamily: {
-        mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
-      }
+      fontFamily: { mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'] },
     },
   },
   plugins: [],

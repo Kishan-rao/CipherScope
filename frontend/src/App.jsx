@@ -43,10 +43,6 @@ export default function App() {
             <Link to="/rsa" className="hover:text-cyan-400 transition-colors">RSA</Link>
           </div>
         </div>
-
-        <div className="max-w-7xl mx-auto mt-6 pt-4 border-t border-slate-900 text-center text-[10px] text-slate-600">
-          Academic educational demonstrator for Cryptography and Network Security. Zero external crypto libraries. All cipher algorithms implemented from scratch.
-        </div>
       </footer>
     </div>
   );

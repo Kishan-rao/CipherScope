@@ -99,14 +99,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
-      {/* Top Banner Notice: Educational Disclaimer */}
-      <div className="bg-gradient-to-r from-indigo-950/60 via-slate-900/60 to-cyan-950/60 border-t border-b border-indigo-900/30 py-1 px-4 text-center text-[11px] text-slate-400 flex items-center justify-center space-x-2">
-        <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-        <span>
-          Academic Educational Visualizer (CNS Assignment). Built from scratch without black-box crypto libraries. Not intended for production cryptographic security.
-        </span>
-      </div>
     </header>
   );
 }

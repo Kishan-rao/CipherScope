@@ -61,11 +61,6 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
       {/* Hero Section */}
       <section className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-300 font-mono">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Cryptography and Network Security (CNS) Lab</span>
-        </div>
-
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
           Cryptography Algorithm{' '}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">

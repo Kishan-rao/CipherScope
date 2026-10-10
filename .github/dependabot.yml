@@ -1,21 +1,22 @@
-
 version: 2
 updates:
-  # Frontend npm dependencies
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
       interval: "weekly"
     groups:
-      react-type-definitions:
-        patterns:
-          - "@types/react"
-          - "@types/react-dom"
       react-core:
         patterns:
           - "react"
           - "react-dom"
+      react-type-definitions:
+        patterns:
+          - "@types/react"
+          - "@types/react-dom"
     ignore:
+      # Dependabot ignore rules also affect security-update PRs. For a fix only available
+      # beyond an ignored boundary, revisit the rule immediately and review that migration.
+      # The app and React DOM APIs are currently on React 18. Review a React 19 migration separately.
       - dependency-name: "react"
         update-types: ["version-update:semver-major"]
       - dependency-name: "react-dom"
@@ -24,14 +25,21 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "@types/react-dom"
         update-types: ["version-update:semver-major"]
+      # Vite 7 remains eligible; Vite 8 requires plugin-react 6 and a coordinated toolchain migration.
+      - dependency-name: "vite"
+        versions: [">=8.0.0"]
+      # Plugin-react 5 supports the current Vite line; v6 requires Vite 8.
+      - dependency-name: "@vitejs/plugin-react"
+        versions: [">=6.0.0"]
+      # Tailwind 4 requires @tailwindcss/postcss and configuration migration from the current v3 setup.
+      - dependency-name: "tailwindcss"
+        versions: [">=4.0.0"]
 
-  # Backend pip dependencies
   - package-ecosystem: "pip"
     directory: "/backend"
     schedule:
       interval: "weekly"
 
-  # GitHub Actions dependencies
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

@@ -27,16 +27,15 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-[#FFFCF5]/95 backdrop-blur-md border-b border-[#E8DECA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-3">
-          <Link to="/" className="flex items-center space-x-3 group shrink-0">
+          <Link to="/" aria-label="CipherScope home" className="flex items-center space-x-3 group shrink-0">
             <div className="w-10 h-10 rounded-xl bg-[#9A6B3F] flex items-center justify-center shadow-sm group-hover:bg-[#7C5230] transition-colors">
               <Shield className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-lg font-bold text-[#7C5230]">CryptoLab</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-[#F0E8D9] text-[#6B665B] border border-[#E8DECA] font-mono">CNS</span>
+                <span className="text-lg font-bold text-[#7C5230]">CipherScope</span>
               </div>
-              <p className="text-[11px] text-[#6B665B] hidden sm:block">Algorithm Visualizer &amp; Demonstrator</p>
+              <p className="text-[11px] text-[#6B665B] hidden sm:block">Classical. Symmetric. Asymmetric. Explained visually.</p>
             </div>
           </Link>
           <nav className="flex items-center space-x-1 sm:space-x-2" aria-label="Main navigation">

@@ -29,8 +29,7 @@ export default function App() {
           <div className="space-y-1">
             <div className="flex items-center justify-center sm:justify-start space-x-2">
               <Shield className="w-4 h-4 text-[#9A6B3F]" />
-              <span className="font-bold text-[#292820]">Cryptography Algorithm Visualizer & Demonstrator</span>
-              <span className="px-1.5 py-0.2 rounded bg-[#F0E8D9] text-[10px] text-[#9A6B3F] font-mono">CNS Lab</span>
+              <span className="font-bold text-[#292820]">CipherScope</span>
             </div>
             <p className="text-[#6B665B] text-[11px]">
               Built with React, Vite, Tailwind CSS, Python 3, FastAPI, and Pytest.

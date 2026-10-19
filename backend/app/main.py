@@ -1,4 +1,4 @@
-"""FastAPI Application Entry Point for Cryptography Algorithm Visualizer & Demonstrator."""
+"""FastAPI application entry point for CipherScope."""
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -7,8 +7,8 @@ from fastapi.exceptions import RequestValidationError
 from app.api.routes import vigenere, aes, rsa
 
 app = FastAPI(
-    title="Cryptography Algorithm Visualizer & Demonstrator API",
-    description="Educational REST API demonstrating Classical (Vigenère), Symmetric (AES-128), and Asymmetric (RSA) Cryptography.",
+    title="CipherScope API",
+    description="Interactive educational platform for understanding Vigenère, AES-128, and RSA through manual implementations, mathematical calculations, and step-by-step visualizations.",
     version="1.0.0",
 )
 
@@ -51,7 +51,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 async def health_check():
     return {
         "status": "ok",
-        "app": "Cryptography Algorithm Visualizer & Demonstrator",
+        "app": "CipherScope",
         "version": "1.0.0",
         "algorithms": ["vigenere", "aes-128", "rsa"],
         "disclaimer": "Educational demonstration only. Not for production cryptographic security."

@@ -1,6 +1,6 @@
-# Cryptography Algorithm Visualizer & Demonstrator — Task Checklist
+# CipherScope — Project Task Checklist
 
-This task checklist tracks the implementation, validation, and completion status of the **Cryptography Algorithm Visualizer & Demonstrator (CNS Lab)** project.
+This task checklist tracks implementation, validation, and completion of CipherScope, developed in a CNS coursework context.
 
 ---
 

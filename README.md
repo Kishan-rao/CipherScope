@@ -1,207 +1,104 @@
-# Cryptography Algorithm Visualizer & Demonstrator
+# CipherScope — Interactive Cryptography Algorithm Explorer
 
-> **CNS Academic Project** — A full-stack interactive platform for visualizing the internal workings of three foundational cryptographic algorithms.
+> **Classical. Symmetric. Asymmetric. Explained visually.**
 
----
+CipherScope is an interactive educational platform for understanding cryptographic algorithms through manual implementations, mathematical calculations, and step-by-step visualizations. It pairs a React frontend with a FastAPI backend that returns detailed traces for each operation.
 
-## What This Project Does
+## Purpose and educational objectives
 
-This application lets you step through the **exact mathematical operations** performed by real cryptographic algorithms — not simulations or pseudocode, but the actual computation:
+CipherScope helps learners connect cryptographic formulas to the operations that produce ciphertext. Explore the arithmetic behind Vigenère, inspect AES-128 state transformations round by round, and follow RSA key derivation and modular exponentiation. The implementations are intended for learning and experimentation.
 
-- **Vigenère Cipher** — watch every character shift through modular arithmetic
-- **AES-128** — inspect each of the 10 rounds and every 4×4 state matrix transformation
-- **RSA** — follow the full key derivation, then trace each bit of the square-and-multiply exponentiation
+## Features and algorithms
 
-All three algorithms are implemented **from scratch in pure Python** — no `cryptography`, `pycryptodome`, or any black-box crypto library is involved in the computations.
+- **Vigenère Cipher:** encrypt and decrypt alphabetic text with modular arithmetic over \(\mathbb{Z}_{26}\), with a per-character calculation trace.
+- **AES-128:** encrypt and decrypt 128-bit blocks, inspect the 4×4 state and all ten rounds, and view the key schedule.
+- **RSA:** derive a key pair from supplied primes and an exponent, then trace encryption or decryption using square-and-multiply.
+- Interactive pages, example inputs, and a health indicator for the backend API.
 
----
+## Technology stack
 
-## Repository Layout
+- Frontend: React 18, React Router, Vite, Tailwind CSS, Axios, and Lucide React.
+- Backend: Python 3.10+, FastAPI, Pydantic, and Uvicorn.
+- Tests: Pytest and HTTPX.
 
-```
-CNS-Cryptography-Lab/
-├── frontend/          React 18 + Vite + Tailwind CSS (port 5173)
-│   └── README.md      ← Frontend developer guide
-│
-├── backend/           Python 3 + FastAPI + Pydantic v2 (port 8000)
-│   └── README.md      ← Backend developer guide
-│
-└── README.md          ← You are here — project overview
-```
+## Project structure
 
----
-
-## Technology Stack
-
-### Frontend — [`frontend/`](./frontend/README.md)
-| | |
-|---|---|
-| Framework | React 18 (via Vite 6) |
-| Routing | React Router DOM v6 |
-| Styling | Tailwind CSS 3 (dark glassmorphism theme, JetBrains Mono) |
-| HTTP | Axios |
-| Icons | Lucide React |
-
-### Backend — [`backend/`](./backend/README.md)
-| | |
-|---|---|
-| Language | Python 3.10+ |
-| Framework | FastAPI |
-| Validation | Pydantic v2 |
-| Server | Uvicorn (ASGI) |
-| Tests | Pytest 9.x (28 tests, all passing) |
-
----
-
-## Architecture Overview
-
-```
-Browser (port 5173)
-      │
-      │  REST / JSON  (Axios)
-      ▼
-FastAPI Backend (port 8000)
-      │
-      ├── /api/v1/vigenere/*
-      ├── /api/v1/aes/*
-      └── /api/v1/rsa/*
-            │
-            ▼ Service Layer
-            │
-            ▼ Algorithm Layer (pure Python, no crypto libs)
-            │
-            ├── algorithms/classical/vigenere.py
-            ├── algorithms/symmetric/aes.py
-            └── algorithms/asymmetric/rsa.py
+```text
+CNS-Cryptography-Lab/       # Existing local directory name; not changed
+├── frontend/               # React application and frontend guide
+├── backend/                # FastAPI application, algorithms, and tests
+└── README.md               # Project overview and setup
 ```
 
-The algorithm modules are **completely independent** of FastAPI — they can be imported and tested without starting the web server.
+## Environment configuration
 
----
+The frontend accepts `VITE_API_URL` in `frontend/.env.local` to set the API base URL. If unset, the client uses `http://localhost:8000/api/v1`. The Vite development server proxies `/api` requests to port 8000. The backend's local CORS origins are configured in `backend/app/main.py`.
 
-## Quick Start
+## Run the application
 
-You need two terminals running simultaneously.
+Start the backend in one terminal:
 
-### Terminal 1 — Backend
-
-```bash
+```powershell
 cd backend
-
-# Create and activate virtual environment
 python -m venv .venv
-
-# Windows
 .\.venv\Scripts\Activate.ps1
-# macOS / Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
-### Terminal 2 — Frontend
+On macOS or Linux, activate the environment with `source .venv/bin/activate`.
 
-```bash
+Start the frontend in a second terminal:
+
+```powershell
 cd frontend
 npm install
 npm run dev
 ```
 
-| Service | URL |
-|---|---|
-| Frontend | http://localhost:5173 |
-| Backend API | http://localhost:8000 |
-| Swagger UI | http://localhost:8000/docs |
-| ReDoc | http://localhost:8000/redoc |
+Open `http://localhost:5173`. The API is available at `http://localhost:8000`; interactive Swagger documentation is at `/docs` and ReDoc at `/redoc`.
 
-> The Vite dev server proxies all `/api` requests to `localhost:8000` automatically.
+## Run the test suite
 
----
+Run backend tests from `backend/` after installing its requirements:
 
-## Algorithms Implemented
-
-### Vigenère Cipher (Classical)
-
-Polyalphabetic substitution over $\mathbb{Z}_{26}$:
-
-- **Encrypt:** $C_i = (P_i + K_i) \bmod 26$
-- **Decrypt:** $P_i = (C_i - K_i + 26) \bmod 26$
-
-Returns a per-character step trace with values, key chars, and the full calculation string.
-
----
-
-### AES-128 (Symmetric — FIPS-197)
-
-Full 10-round implementation with complete state tracing:
-
-| Component | Detail |
-|---|---|
-| Block size | 128-bit (16 bytes) — $4 \times 4$ column-major state matrix |
-| Key size | 128-bit (16 bytes) |
-| Rounds | 10 (1 initial + 9 standard + 1 final) |
-| Key schedule | `RotWord` + `SubWord` + `Rcon` → 11 round keys |
-| S-box | 256-entry bijection verified against FIPS-197 (duplicate-free) |
-| GF(2⁸) | Irreducible polynomial $x^8 + x^4 + x^3 + x + 1$ (0x11B) |
-
-**NIST Known-Answer Test Vector:**
-
-| Key | `000102030405060708090a0b0c0d0e0f` |
-|---|---|
-| Plaintext | `00112233445566778899aabbccddeeff` |
-| Ciphertext | `69c4e0d86a7b0430d8cdb78070b4c55a` ✓ |
-
----
-
-### RSA (Asymmetric)
-
-Full mathematical derivation from primes to ciphertext:
-
-| Step | Formula |
-|---|---|
-| Modulus | $n = p \times q$ |
-| Totient | $\phi(n) = (p-1)(q-1)$ |
-| Public exponent | $\gcd(e,\ \phi(n)) = 1$ |
-| Private exponent | $d \equiv e^{-1} \pmod{\phi(n)}$ via Extended Euclidean |
-| Encrypt | $C = M^e \bmod n$ |
-| Decrypt | $M = C^d \bmod n$ |
-
-Exponentiation is performed with the **binary square-and-multiply** method, returning a full per-bit trace.
-
----
-
-## Running Tests
-
-```bash
-cd backend
-.\.venv\Scripts\pytest -v
+```powershell
+python -m pytest -v
 ```
 
-```
-28 passed in 1.12s
-├── test_aes.py         (10) — NIST KAT, all transformations, S-box bijection
-├── test_rsa.py          (7) — number theory, keygen, encrypt/decrypt
-├── test_vigenere.py     (7) — validation, vectors, case preservation
-└── test_api_routes.py   (4) — REST endpoint integration
-```
+Build the frontend from `frontend/` with `npm run build`.
 
----
+## API documentation and endpoints
 
-## API Endpoints
+FastAPI serves OpenAPI documentation at `/docs` and `/redoc`. API routes are under `/api/v1`:
 
-| Method | Endpoint | Purpose |
+| Method | Path | Purpose |
 |---|---|---|
-| GET | `/api/v1/health` | Health check |
-| POST | `/api/v1/vigenere/encrypt` | Vigenère encryption |
-| POST | `/api/v1/vigenere/decrypt` | Vigenère decryption |
-| POST | `/api/v1/aes/encrypt` | AES-128 encryption |
-| POST | `/api/v1/aes/decrypt` | AES-128 decryption |
-| POST | `/api/v1/rsa/generate-keys` | RSA key generation |
-| POST | `/api/v1/rsa/encrypt` | RSA encryption |
-| POST | `/api/v1/rsa/decrypt` | RSA decryption |
+| GET | `/api/v1/health` | Service status and supported algorithms |
+| POST | `/api/v1/vigenere/encrypt` | Encrypt text with Vigenère |
+| POST | `/api/v1/vigenere/decrypt` | Decrypt text with Vigenère |
+| POST | `/api/v1/aes/encrypt` | Encrypt one AES-128 block |
+| POST | `/api/v1/aes/decrypt` | Decrypt one AES-128 block |
+| POST | `/api/v1/rsa/generate-keys` | Derive RSA key values |
+| POST | `/api/v1/rsa/encrypt` | Encrypt an RSA message |
+| POST | `/api/v1/rsa/decrypt` | Decrypt an RSA ciphertext |
 
-Full request/response schemas in [`backend/README.md`](./backend/README.md).
+Request and response schemas, algorithm details, and setup notes are in [backend/README.md](./backend/README.md). Frontend development information is in [frontend/README.md](./frontend/README.md).
 
----
+## AES-128 known-answer test
 
+The AES tests include the FIPS-197/NIST known-answer vector:
+
+| Input | Hex value |
+|---|---|
+| Key | `000102030405060708090a0b0c0d0e0f` |
+| Plaintext | `00112233445566778899aabbccddeeff` |
+| Expected ciphertext | `69c4e0d86a7b0430d8cdb78070b4c55a` |
+
+The test is `backend/tests/test_aes.py::test_aes_nist_known_answer_vector_encryption`.
+
+## Educational limitations and security
+
+CipherScope is an educational demonstration, not production cryptographic software. Vigenère is a historical cipher, this AES implementation is designed to expose internal steps rather than provide hardened cryptographic handling, and the RSA examples do not provide padding or a secure protocol. Do not use this application or its outputs to protect real data.
+
+The project was developed in a CNS coursework context; the existing repository directory and Git remote are retained.

@@ -62,16 +62,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="text-center space-y-4 max-w-3xl mx-auto">
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
-          Cryptography Algorithm{' '}
-          <span className="text-[#7C5230]">
-            Visualizer & Demonstrator
-          </span>
+          CipherScope
         </h1>
 
         <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-          An interactive academic platform demonstrating the mathematical foundations,
-          internal state transformations, and step-by-step mechanics of Classical, Symmetric,
-          and Asymmetric cryptography.
+          An interactive educational platform for understanding cryptographic algorithms through
+          manual implementations, mathematical calculations, and step-by-step visualizations.
         </p>
       </section>
 
@@ -163,7 +159,7 @@ export default function Home() {
         <div className="flex items-center space-x-3 w-full md:w-auto">
           <div className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-mono text-emerald-400 flex items-center space-x-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>27/27 Pytest Tests Passing</span>
+            <span>FIPS-197 AES-128 Known-Answer Test</span>
           </div>
         </div>
       </section>

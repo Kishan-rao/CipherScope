@@ -1,1 +1,1 @@
-"""CNS Cryptography Lab Backend Application."""
+"""CipherScope backend application."""

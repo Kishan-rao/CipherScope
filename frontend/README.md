@@ -1,6 +1,6 @@
-# CNS Cryptography Lab — Frontend
+# CipherScope — Frontend
 
-React 18 single-page application that visualizes the step-by-step execution of Vigenère, AES-128, and RSA cryptographic algorithms. Built with Vite and Tailwind CSS.
+React 18 single-page application for CipherScope. It visualizes the step-by-step execution of Vigenère, AES-128, and RSA cryptographic algorithms. Built with Vite and Tailwind CSS.
 
 ---
 

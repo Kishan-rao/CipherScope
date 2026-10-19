@@ -1,6 +1,6 @@
-# CNS Cryptography Lab — Backend API
+# CipherScope — Backend API
 
-FastAPI REST API powering the **Cryptography Algorithm Visualizer & Demonstrator**. Provides pure-Python cryptographic computations and returns detailed step-by-step traces to the React frontend.
+FastAPI REST API powering CipherScope, an educational cryptography algorithm explorer. It provides manual cryptographic computations and detailed step-by-step traces to the React frontend. Developed in a CNS coursework context.
 
 ---
 
@@ -161,7 +161,7 @@ Expected result: **28 passed**.
 ```json
 {
   "status": "ok",
-  "app": "Cryptography Algorithm Visualizer & Demonstrator",
+  "app": "CipherScope",
   "version": "1.0.0",
   "algorithms": ["vigenere", "aes-128", "rsa"]
 }
